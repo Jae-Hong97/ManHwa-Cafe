@@ -1,0 +1,24 @@
+
+.navbar {
+  text-decoration: none;
+  background-color: rgb(105, 231, 253);
+  font: white;
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.navbar-menu ul {
+    display: flex;
+    padding: 1px;
+    margin: 5%;
+    
+}
+
+.navigation-menu {
+   
+    
+    margin: 20px;
+    padding: 20px;
+    width: 100%;
+  }

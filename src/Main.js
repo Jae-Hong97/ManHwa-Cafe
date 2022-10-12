@@ -1,119 +1,56 @@
 /* eslint-disable */
 import React from "react";
 import { BrowserRouter, Link, Route, Routes, NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Navbar from "./Navbar";
+import { useState } from 'react';
+import "./Main.css"
 
-const drawerWidth = 240;
-const navItems = ['Home', '요금충전', '마이페이지'];
+function Main() {
+    
+      let posts = { fontSize: '30px'}
+      let [글제목, 글제목변경] = useState(['가게1','가게2','가게3'])
+      let [따봉, 따봉변경] = useState(0);
 
-function Main(props) {
+      function 함수(){
+        console.log(1);
+      }
 
-    const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+      function 정렬하기(){
+        const newArray2 = [...글제목];
+        글제목변경( newArray2.sort() );
+      }
   
-    const handleDrawerToggle = () => {
-      setMobileOpen(!mobileOpen);
-    };
-  
-    const drawer = (
-      <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-        <Typography variant="h6" sx={{ my: 2 }}>
-          만화카페 통합시스템
-        </Typography>
-        <Divider />
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item} disablePadding>
-              <ListItemButton sx={{ textAlign: 'center' }}>
-                <ListItemText primary={item} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-    );
-  
-    const container = window !== undefined ? () => window().document.body : undefined;
-
     return (
       <div className="Main">
         
-        <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            만화카페 통합시스템
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      
-    </Box>
-            
-              <div>  <h1>메인 페이지 입니다</h1> </div>
-            
-  
-      
+             <div> <Navbar/></div>
+        <div>
+        <button onClick={정렬하기}> 내 위치</button>
+        </div>
+
+            <button onClick={()=>{
+            let copy = [...글제목];
+            copy[0] = '수정된 제목';
+            글제목변경(copy);
+          }}>요금 충전</button>
+          
+          <div className='list'>
+            <h4>{글제목[0]}<span onClick={()=>{따봉변경 (따봉+1) }}>👍</span> {따봉} </h4>
+            <p>가게이름 인원현황 시간당금액 거리</p>
+          </div>
+          <div className='list'>
+            <h4>{글제목[1]}</h4>
+            <p>가게이름 인원현황 시간당금액 거리</p>
+          </div>
+          <div className='list'>
+            <h4>{글제목[2]}</h4>
+            <p>가게이름 인원현황 시간당금액 거리</p>
+          </div>
       </div>
       
       
     );
   }
   
-  Main.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-  };
+  
   export default Main;
