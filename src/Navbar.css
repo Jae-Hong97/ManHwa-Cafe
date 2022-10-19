@@ -1,24 +1,36 @@
-
 .navbar {
-  text-decoration: none;
-  background-color: rgb(105, 231, 253);
-  font: white;
-  font-size: 1.3rem;
-  margin-left: 1rem;
-  width: 100%;
-}
-
-.navbar-menu ul {
-    display: flex;
-    padding: 1px;
-    margin: 5%;
-    
-}
-
-.navigation-menu {
-   
-    
-    margin: 20px;
-    padding: 20px;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 1rem;
     width: 100%;
+    
+  }
+  
+  .navbar-menu ul {
+      display: flex;
+      padding: 1px;
+      background-color: rgb(39, 39, 39);
+      color: white;
+      list-style-type: circle;
+      
+  }
+  
+  .navbarlist1{
+    
+    margin: 30px;
+  }
+  
+  .navbarlist2{
+    
+    margin: 30px;
+  }
+
+  .navbarlist3{
+    
+    margin: 30px;
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
   }
